@@ -1,1 +1,18 @@
-<h1>Restaurant Front-Extrance</h1>
+<%=render partial:"title"%><br><br>
+<div class="container content">
+  <h1 class="f-b">Restaurant Front-Extrance</h1>
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+    <div class="res-place col-sm-6 col-md-4">
+
+      <%= restaurant.name %>
+      <%= link_to 'Show', admin_restaurant_path(restaurant) %>
+      <% link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
+      <% link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} %><br>
+      <%= image_tag restaurant.image, width: '300px' %>
+    </div>
+    <% end %>
+  </div>
+  <% link_to 'New Restaurant', new_admin_restaurant_path %>
+  <%= paginate @restaurants %>
+</div>
