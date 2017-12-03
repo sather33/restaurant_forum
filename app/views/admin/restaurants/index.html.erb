@@ -20,28 +20,44 @@
     </div>
     <br><br>
     <div class="container content">
-      <h1 class="f-b">Restaurant Back-Extrance</h1>
+      <h1 class="f-b content2">Restaurant Back-Extrance</h1>
       <div class="row">
-        <% @restaurants.each do |restaurant| %>
-        <div class="res-place col-sm-6 col-md-4">
+        <div class="col-md-12">
 
-          <%= restaurant.name %>
-          <%= link_to  admin_restaurant_path(restaurant) do%>
-            <span class="glyphicon glyphicon-eye-open"></span>
-          <%end%>
-          <%= link_to  edit_admin_restaurant_path(restaurant)do %>
-            <span class="glyphicon glyphicon-pencil"></span>
-          <%end%>
-          <%= link_to  admin_restaurant_path(restaurant), method: :delete, data: {confirm:"Are you sure?"} do%>
-            <span class="glyphicon glyphicon-fire"></span>
-          <%end%>
+          <div class="content2">
+            <%= link_to 'New Restaurant', new_admin_restaurant_path, class: "btn btn-primary" %>
+          </div>
           <br>
-          <%= image_tag restaurant.image, width: '300px' %>
+          <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Category</th>
+              <th>Name</th>
+              <th>#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @restaurants.each do |restaurant| %>
+            <tr>
+              <th scope="row"><%= restaurant.id %></th>
+              <td>[<%= restaurant.category.name %>]</td>
+              <td><%= restaurant.name %></td>
+              <td>
+                <%= link_to 'Show', admin_restaurant_path(restaurant) %>
+                <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
+                <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"} %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+          </table>
+          <div class="text-center">
+            <%= paginate @restaurants %>
+          </div>
         </div>
-        <% end %>
       </div>
-      <% link_to 'New Restaurant', new_admin_restaurant_path %>
-      <%= paginate @restaurants %>
+
     </div>
   </body>
 </html>
