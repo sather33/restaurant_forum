@@ -1,6 +1,5 @@
 class RestaurantsController < ApplicationController
-  #before_action :authenticate_user!
-
+  skip_before_action :authenticate_user!
   before_action :set_restaurant, only: [:show]
   def index
     @restaurants = Restaurant.page(params[:page]).per(9)
