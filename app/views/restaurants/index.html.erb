@@ -24,16 +24,18 @@
       <div class="row">
         <% @restaurants.each do |restaurant| %>
           <div class="res-place col-xs-12 col-sm-6 col-md-4">
-            <%= restaurant.name %>
-            <%= link_to restaurant_path(restaurant) do%>
-              <span class="glyphicon glyphicon-eye-open"></span>
-            <%end%>
-            <br>
-            <%= image_tag restaurant.image, width: '300px' %>
+            <%= image_tag restaurant.image, class: "img-responsive center-block" %>
+            <div class="caption">
+              <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+              <p class="label label-default"><%= restaurant.category.name %><p>
+              <p><%= truncate(restaurant.description, length: 80) %></p>
+            </div>
           </div>
         <% end %>
       </div>
-      <%= paginate @restaurants %>
+      <div class="text-center">
+        <%= paginate @restaurants %>
+      </div>
     </div>
 
   </body>
