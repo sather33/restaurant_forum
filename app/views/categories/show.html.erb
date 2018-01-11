@@ -1,0 +1,16 @@
+<%= render partial: "share/title" %>
+<br><br>
+  <div class="container content2">
+    <h1 class="f-b">Restaurant Front-Extrance</h1>
+    <ul class="nav nav-pills">
+      <li role="presentation" ><%= link_to "全部餐廳", root_path %></li>
+      <% @categories.each do |category| %>
+        <% if category == @category %>
+          <li role="presentation" class="active"><%= link_to category.name, category_path(category) %></li>
+        <% else %>
+          <li role="presentation" ><%= link_to category.name, category_path(category) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <%= render partial: "share/restaurant_list" %>
+  </div>
