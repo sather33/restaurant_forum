@@ -3,9 +3,13 @@
     Hi, <%= current_user.email %>
     <%= link_to('登出', destroy_user_session_path, method: :delete) %> |
     <%= link_to('修改密碼', edit_user_registration_path) %>
+    <%= '|' unless current_user.admin? %>
+    <%= link_to('Profile', user_path(current_user)) unless current_user.admin? %>
+    <%= '|' if current_user.admin? %>
+    <%= link_to('Background', admin_root_path) if current_user.admin?%> |
+    <%= link_to('Home', restaurants_path) %>
   <% else %>
     <%= link_to('註冊', new_user_registration_path) %> |
     <%= link_to('登入', new_user_session_path) %>
   <% end %>
-  |<%= link_to('Background', admin_root_path) %>
 </div>
