@@ -1,0 +1,21 @@
+<%= render partial: "share/title" %>
+<br><br>
+<div class="container">
+  <div class="row">
+   <%= form_for current_user do |f| %>
+    <div class="form-group">
+			<%= f.label :name %>
+    	<%= f.text_field :name, placeholder: "name", class: "form-control" %>
+			<%= f.label '自我介紹' %>
+    	<%= f.text_area :intro, placeholder: "name", class: "form-control" %>
+			<%= f.label '大頭貼上傳' %>
+    	<%= f.file_field :avatar%>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+    </div>
+  <% end %>
+  </div>
+</div>

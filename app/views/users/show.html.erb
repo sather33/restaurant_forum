@@ -1,1 +1,19 @@
 <%= render partial: "share/title" %>
+<br><br>
+<div class="container content2">
+  <div class="avatar">
+    <%= image_tag current_user.avatar, height: 300 %>
+  </div>
+  <section>
+    <%= current_user.name %>
+  </section>
+  <section>
+    <%= current_user.email %>
+  </section>
+  <section>
+    <%= current_user.intro %>
+  </section>
+  <div>
+    <%= link_to('Edit', edit_user_path(current_user)) %>
+  </div>
+</div>
