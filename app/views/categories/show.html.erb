@@ -5,11 +5,9 @@
     <ul class="nav nav-pills">
       <li role="presentation" ><%= link_to "全部餐廳", root_path %></li>
       <% @categories.each do |category| %>
-        <% if category == @category %>
-          <li role="presentation" class="active"><%= link_to category.name, category_path(category) %></li>
-        <% else %>
-          <li role="presentation" ><%= link_to category.name, category_path(category) %></li>
-        <% end %>
+        <li role="presentation" class="<%= "active" if category == @category %>">
+          <%= link_to category.name, category_path(category) %>
+        </li>
       <% end %>
     </ul>
     <%= render partial: "share/restaurant_list" %>
