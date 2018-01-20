@@ -2,18 +2,18 @@
 <br><br>
 <div class="container content2">
   <div class="avatar">
-    <%= image_tag current_user.avatar, height: 300 %>
+    <%= image_tag @user.avatar, height: 300 %>
   </div>
   <section>
-    <%= current_user.name %>
+    <%= @user.name %>
   </section>
   <section>
-    <%= current_user.email %>
+    <%= @user.email %>
   </section>
   <section>
-    <%= current_user.intro %>
+    <%= @user.intro %>
   </section>
   <div>
-    <%= link_to('Edit', edit_user_path(current_user)) %>
+    <%= link_to('Edit', edit_user_path(@user)) if current_user.id == @user.id%>
   </div>
 </div>
