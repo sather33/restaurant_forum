@@ -219,6 +219,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.3.7)
+  bundler (~> 1.16, >= 1.16.1)
   byebug
   capybara (~> 2.13)
   carrierwave
@@ -243,4 +244,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
