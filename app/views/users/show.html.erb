@@ -15,3 +15,14 @@
     <%= link_to('Edit', edit_user_path(@user)) if current_user.id == @user.id%>
   </div>
 </div>
+<div class="container content2">
+  <nav class="navbar navbar-inverse comment_nav">
+    <%=  "  #{@commented_restaurants.count} comments"%>
+  </nav>
+  <% @commented_restaurants.each do |restaurant| %>
+    <div class="my-restaurant">
+      <%= image_tag restaurant.image, class: "img" %></br>
+      <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+    </div>
+  <% end %>
+</div>

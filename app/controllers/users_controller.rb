@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 	before_action :fetch_user, only: [:show, :update]
 
+	def show
+    @commented_restaurants = @user.restaurants.uniq
+	end
+
 	def update
 		if @user.update(user_params)
       redirect_to user_path(@user)
