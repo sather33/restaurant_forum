@@ -1,7 +1,7 @@
 <div class="row">
     <% @restaurants.each do |restaurant| %>
         <div class="res-place col-xs-12 col-sm-6 col-md-4">
-        <%= image_tag restaurant.image, class: "img-responsive center-block" %>
+            <%= image_tag restaurant.image, height: 120 %>
         <div class="caption">
             <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
             <p class="label label-default"><%= restaurant.category.name %><p>
