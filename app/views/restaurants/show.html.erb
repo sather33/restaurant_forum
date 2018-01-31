@@ -20,8 +20,10 @@
       <%= simple_format @restaurant.description %>
     </div>
 
-    <div class="btn btn-default">
-      <%= link_to"Dashboard", dashboard_restaurant_path %>
+    <div>
+      <%= link_to"Dashboard", dashboard_restaurant_path, class: "btn btn-primary" %>
+      <%= link_to 'Favorite', favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-primary" %>
+      <%= link_to 'Unfavorite', unfavorite_restaurant_path(@restaurant), method: :post, class: "btn btn-info" %>
     </div>
     <hr>
   </div>
