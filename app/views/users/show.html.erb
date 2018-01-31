@@ -1,28 +1,66 @@
 <div class="container content2">
   <div class="avatar">
-    <%= image_tag @user.avatar, height: 300 %>
+    <%= image_tag @user.avatar, width: 290 %>
   </div>
-  <section>
-    <%= @user.name %>
-  </section>
-  <section>
-    <%= @user.email %>
-  </section>
-  <section>
-    <%= @user.intro %>
-  </section>
-  <div>
-    <%= link_to('Edit', edit_user_path(@user)) if current_user.id == @user.id%>
+  <div class="profile-content">
+    <p><%= @user.name %></p><br>
+    <%= @user.email %><br>
+    <%= @user.intro %><br>
+    <%= profile_edit%>
   </div>
 </div>
 <div class="container content2">
-  <nav class="navbar navbar-inverse comment_nav">
-    <%=  "  #{@commented_restaurants.count} comments"%>
-  </nav>
-  <% @commented_restaurants.each do |restaurant| %>
-    <div class="my-restaurant">
-      <%= image_tag restaurant.image, class: "img" %></br>
-      <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
-    </div>
-  <% end %>
+  <div class="follower">
+    <nav class="navbar navbar-default nav">
+      <%=  "  #{@followings.count} followings"%>
+    </nav>
+    <ul class="list-group">
+      <% @followings.each do |following| %>
+        <li class="list-group-item">
+          <%= link_to user_path(following) do %>
+            <%= image_tag(following.avatar, height: 30, width: 30) %>
+            <%= following.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="comment">
+    <nav class="navbar navbar-default nav">
+      <%=  "  #{@commented_restaurants.count} comments"%>
+    </nav>
+    <% @commented_restaurants.each do |restaurant| %>
+      <div class="my-restaurant">
+        <%= image_tag restaurant.image, class: "img" %></br>
+        <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div class="follower">
+    <nav class="navbar navbar-default nav">
+      <%=  "  #{@followers.count} followers"%>
+    </nav>
+    <ul class="list-group">
+      <% @followers.each do |follower| %>
+        <li class="list-group-item">
+          <%= link_to user_path(follower) do %>
+            <%= image_tag(follower.avatar, height: 30, width: 30, class: "img-circle") %>
+            <%= follower.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="comment">
+    <nav class="navbar navbar-default nav">
+      <%=  "  #{@favorited_restaurants.count} restaurants"%>
+    </nav>
+    <% @favorited_restaurants.each do |restaurant| %>
+      <div class="my-restaurant">
+        <%= image_tag restaurant.image, class: "img" %></br>
+        <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+      </div>
+    <% end %>
+  </div>
 </div>
