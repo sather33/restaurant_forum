@@ -1,0 +1,13 @@
+<div class="container content2">
+  <h1 class="f-b">美食達人</h1>
+  <%= render partial: "share/nav" %>
+  <div>
+    <h3>美食達人</h3>
+    <% @users.each do |user| %>
+    <div class="follow-people">
+      <%= user.name %></br>
+      <%= render partial: "share/follow", locals: {user: user} %>
+    </div>
+    <% end %>
+  </div>
+</div>

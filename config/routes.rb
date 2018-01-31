@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:show, :create, :destroy]
     collection do 
       get :feeds
+      get :followships
     end
     member do 
       get :dashboard

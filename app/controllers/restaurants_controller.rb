@@ -38,6 +38,11 @@ class RestaurantsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def followships
+    @followships = Followship.all
+    @users = User.where.not(id: current_user)
+  end
+
   private
 
   def set_restaurant
