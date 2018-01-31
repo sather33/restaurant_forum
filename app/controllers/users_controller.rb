@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 	before_action :fetch_user, only: [:show, :update]
 
+  def index
+    @users = User.all
+  end
+
 	def show
     @commented_restaurants = @user.restaurants.uniq
 	end
