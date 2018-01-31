@@ -7,4 +7,9 @@ class Restaurant < ApplicationRecord
   
   mount_uploader :image, PhotoUploader
   scope :recent_ten, -> { order(created_at: :desc).limit(10) }
+
+  def is_favorited?(user)
+    self.favorited_users.include?(user)
+  end
+  
 end

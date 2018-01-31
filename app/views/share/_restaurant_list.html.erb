@@ -1,11 +1,12 @@
-<div class="row">
+<div class="row block">
     <% @restaurants.each do |restaurant| %>
         <div class="res-place col-xs-12 col-sm-6 col-md-4">
-            <%= image_tag restaurant.image, height: 120 %>
+            <%= image_tag restaurant.image, height: 150 %>
         <div class="caption">
             <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
             <p class="label label-default"><%= restaurant.category.name %><p>
             <p><%= truncate(restaurant.description, length: 80) %></p>
+            <%= render partial: "share/favorite", locals: {restaurant: restaurant} %>
         </div>
         </div>
     <% end %>
